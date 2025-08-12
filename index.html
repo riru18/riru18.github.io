@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ricardo Ruiz — Portfolio</title>
+  <meta name="description" content="Ricardo Ruiz — projects, writing, and experiments." />
+  <meta property="og:title" content="Ricardo Ruiz — Portfolio" />
+  <meta property="og:description" content="Projects, writing, and experiments." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ricardoruiz.tech/" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0e14;
+      --panel: #111522;
+      --text: #e6e6e6;
+      --muted: #9aa4b2;
+      --brand: #4f9cf9;
+      --brand-2: #7c4dff;
+      --ok: #16a34a;
+      --warn: #ca8a04;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --maxw: 1120px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f8fb;
+        --panel: #ffffff;
+        --text: #0b0e14;
+        --muted: #4a5568;
+        --shadow: 0 10px 30px rgba(20,20,20,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(79,156,249,.25), transparent 60%),radial-gradient(900px 500px at 110% 10%, rgba(124,77,255,.18), transparent 60%),var(--bg);color:var(--text);font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+    a{color:inherit}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
+    header.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:40px 0}
+    @media (max-width:900px){header.hero{grid-template-columns:1fr;gap:18px}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));border:1px solid rgba(255,255,255,.06);backdrop-filter:saturate(140%) blur(6px);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .panel{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--radius)}
+    .hero .intro{padding:28px}
+    .hero h1{margin:0 0 10px;font-size:clamp(28px, 5vw, 48px);letter-spacing:.2px}
+    .hero p{margin:6px 0 18px;color:var(--muted);font-size:clamp(14px, 2vw, 18px)}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+    .badge{border:1px solid rgba(255,255,255,.14);padding:8px 12px;border-radius:999px;font-size:13px;white-space:nowrap}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{appearance:none;border:0;border-radius:999px;padding:12px 16px;font-weight:600;cursor:pointer;transition:transform .12s ease, box-shadow .2s ease}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:white;box-shadow:0 8px 24px rgba(79,156,249,.35)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.16)}
+    .btn:active{transform:translateY(1px)}
+    .glass{position:relative;overflow:hidden}
+    .glass:before{content:"";position:absolute;inset:0;background:radial-gradient(800px 300px at -10% -20%, rgba(79,156,249,.25), transparent 40%),radial-gradient(600px 300px at 110% 0%, rgba(124,77,255,.2), transparent 40%)}
+
+    /* Projects */
+    section{margin:24px 0}
+    .section-title{display:flex;align-items:baseline;justify-content:space-between;margin:8px 4px 14px}
+    .section-title h2{font-size:22px;margin:0}
+    .section-title .filters{display:flex;gap:8px;align-items:center}
+    .section-title input[type="search"]{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:transparent;color:var(--text);min-width:220px}
+
+    .grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:16px}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2, minmax(0,1fr))}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+    .proj{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-sm);background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.02))}
+    .proj:hover{transform:translateY(-2px);transition:transform .18s ease}
+    .proj .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
+    .proj .title{display:flex;gap:8px;align-items:center;font-weight:700}
+    .pill{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:var(--muted)}
+    .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .desc{color:var(--muted)}
+    .links{display:flex;gap:10px;margin-top:auto}
+    .links a{display:inline-flex;gap:6px;align-items:center;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.14);text-decoration:none}
+
+    footer{margin:40px 0 20px;color:var(--muted);text-align:center}
+    .hidden{display:none !important}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="intro glass card">
+        <h1>Ricardo Ruiz</h1>
+        <p>Financial data analyst and CS student building practical tools: SQL automation, clean visualizations, and small web apps deployed on GitHub Pages.</p>
+        <div class="badges">
+          <span class="badge">T‑SQL</span>
+          <span class="badge">Python</span>
+          <span class="badge">Java</span>
+          <span class="badge">Power BI</span>
+          <span class="badge">GitHub Actions</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn secondary" href="https://github.com/riru18" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn secondary" href="mailto:ricardoruiz@proton.me">Email</a>
+          <a class="btn secondary" href="/resume.pdf">Resume</a>
+        </div>
+      </div>
+      <div class="panel" style="padding:22px">
+        <h2 style="margin:0 0 10px;font-size:18px">Now</h2>
+        <p style="margin:0 0 8px;color:var(--muted)">Exploring factor automation with SQL.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <span class="pill">Open-source</span>
+          <span class="pill">Data viz</span>
+          <span class="pill">CLI tools</span>
+          <span class="pill">Education</span>
+        </div>
+      </div>
+    </header>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Filter by name, topic, or language" />
+        </div>
+      </div>
+      <div id="projects-grid" class="grid" aria-live="polite"></div>
+      <div id="empty" class="hidden" style="margin:10px 4px;color:var(--muted)">No repositories match your filter.</div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Ricardo Ruiz</div>
+    </footer>
+  </div>
+
+  <script>
+    const GH_USER = "riru18"; // change if needed
+
+    // Optional: pin specific repos to appear first
+    const FEATURED = [
+      // "Proyecto3",
+      // "proyecto2",
+      // "adventureworks-sql-snippets",
+    ];
+
+    const HIDE_FORKS = true; // flip to show forks
+    const EXCLUDE = new Set(["riru18.github.io"]);
+
+    const grid = document.getElementById('projects-grid');
+    const empty = document.getElementById('empty');
+    const search = document.getElementById('search');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    function el(tag, props = {}, children = []){
+      const n = document.createElement(tag);
+      Object.assign(n, props);
+      for(const c of children){ n.append(c); }
+      return n;
+    }
+
+    function repoCard(r){
+      const topics = (r.topics||[]).slice(0,6);
+      const hasHomepage = r.homepage && !/^https?:\/\/github\.com\//i.test(r.homepage);
+      const homepage = hasHomepage ? r.homepage : `/${r.name}/`;
+      const lang = r.language || "";
+      const star = `★ ${r.stargazers_count}`;
+      const fork = `⑂ ${r.forks_count}`;
+
+      const title = el('div', {className:'title'}, [
+        el('span', {textContent:r.name}),
+        FEATURED.includes(r.name) ? el('span', {className:'pill', textContent:'Featured'}) : null,
+      ].filter(Boolean));
+
+      const desc = el('div', {className:'desc', textContent: r.description || 'No description yet.'});
+
+      const tags = el('div', {className:'tags'}, [
+        lang ? el('span', {className:'pill', textContent: lang}) : null,
+        ...topics.map(t => el('span', {className:'pill', textContent: t}))
+      ].filter(Boolean));
+
+      const meta = el('div', {className:'meta'}, [
+        el('span', {textContent: star}),
+        el('span', {textContent: fork}),
+        el('span', {textContent: new Date(r.pushed_at).toLocaleDateString(undefined, {year:'numeric', month:'short'}) })
+      ]);
+
+      const links = el('div', {className:'links'}, [
+        el('a', {href: homepage, target:'_blank', rel:'noopener', textContent:'Open'}),
+        el('a', {href: r.html_url, target:'_blank', rel:'noopener', textContent:'Source'})
+      ]);
+
+      const card = el('article', {className:'proj card'}, [title, desc, tags, meta, links]);
+      return card;
+    }
+
+    function applyFilter(){
+      const q = search.value.trim().toLowerCase();
+      let any = false;
+      for(const card of grid.children){
+        const hay = card.getAttribute('data-haystack');
+        const show = !q || hay.includes(q);
+        card.style.display = show ? '' : 'none';
+        if(show) any = true;
+      }
+      empty.classList.toggle('hidden', any);
+    }
+
+    async function load(){
+      try{
+        const perPage = 100;
+        const url = `https://api.github.com/users/${GH_USER}/repos?per_page=${perPage}&sort=updated`;
+        const res = await fetch(url, {headers:{'Accept':'application/vnd.github+json'}});
+        if(!res.ok) throw new Error(`GitHub API ${res.status}`);
+        let repos = await res.json();
+
+        repos = repos.filter(r => !EXCLUDE.has(r.name) && (!HIDE_FORKS || !r.fork));
+
+        // Fetch topics for each repository (optional enrichment)
+        const withTopics = await Promise.all(repos.map(async r => {
+          try{
+            const tr = await fetch(`https://api.github.com/repos/${GH_USER}/${r.name}/topics`, {headers:{'Accept':'application/vnd.github.mercy-preview+json'}});
+            if(tr.ok){
+              const data = await tr.json();
+              r.topics = data.names || [];
+            }
+          }catch(e){/* ignore */}
+          return r;
+        }));
+
+        // Sort: featured first, then by pushed_at
+        withTopics.sort((a,b)=>{
+          const fa = FEATURED.includes(a.name) ? 0 : 1;
+          const fb = FEATURED.includes(b.name) ? 0 : 1;
+          if(fa !== fb) return fa - fb;
+          return new Date(b.pushed_at) - new Date(a.pushed_at);
+        });
+
+        // Render
+        grid.textContent = '';
+        for(const r of withTopics){
+          const card = repoCard(r);
+          const hay = [r.name, r.description||'', r.language||'', ...(r.topics||[])].join(' ').toLowerCase();
+          card.setAttribute('data-haystack', hay);
+          grid.append(card);
+        }
+        applyFilter();
+      }catch(err){
+        grid.innerHTML = `<div class="panel" style="padding:18px">Failed to load repositories. You can still browse them on <a href="https://github.com/${GH_USER}">GitHub</a>.</div>`;
+        console.error(err);
+      }
+    }
+
+    search.addEventListener('input', applyFilter);
+    load();
+  </script>
+</body>
+</html>
