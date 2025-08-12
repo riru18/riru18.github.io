@@ -46,7 +46,7 @@
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.16);color:var(--text)}
     .btn:active{transform:translateY(1px)}
     .glass{position:relative;overflow:hidden}
-    .glass:before{content:"";position:absolute;inset:0;background:radial-gradient(800px 300px at -10% -20%, rgba(79,156,249,.25), transparent 40%),radial-gradient(600px 300px at 110% 0%, rgba(124,77,255,.2), transparent 40%)}
+    .glass:before{content:"";position:absolute;inset:0;background:radial-gradient(800px 300px at -10% -20%, rgba(79,156,249,.25), transparent 40%),radial-gradient(600px 300px at 110% 0%, rgba(124,77,255,.2), transparent 40%);pointer-events:none;z-index:0}
 
     section{margin:24px 0}
     .section-title{display:flex;align-items:baseline;justify-content:space-between;margin:8px 4px 14px}
@@ -96,7 +96,7 @@
       </div>
       <div class="panel" style="padding:22px">
         <h2 style="margin:0 0 10px;font-size:18px">Now</h2>
-        <p style="margin:0 0 8px;color:var(--muted)">Exploring factor automation with SQL for FTSE Russell metrics. Learning-by-shipping small utilities. Notes live in public repos.</p>
+        <p style="margin:0 0 8px;color:var(--muted)">Exploring factor automation with SQL.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
           <span class="pill">Open-source</span>
           <span class="pill">Data viz</span>
@@ -141,7 +141,7 @@
     const year = document.getElementById('year');
     year.textContent = new Date().getFullYear();
 
-    // Make buttons work in sandboxed previews and on GitHub Pages
+
     function handleButtons(){
       document.querySelectorAll('[data-action]')?.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -228,7 +228,7 @@
 
         repos = repos.filter(r => !EXCLUDE.has(r.name) && (!HIDE_FORKS || !r.fork));
 
-        // Fetch topics for each repository (optional enrichment)
+        // Fetch topics for each repo
         const withTopics = await Promise.all(repos.map(async r => {
           try{
             const tr = await fetch(`https://api.github.com/repos/${GH_USER}/${r.name}/topics`, {headers:{'Accept':'application/vnd.github.mercy-preview+json'}});
@@ -240,7 +240,6 @@
           return r;
         }));
 
-        // Sort: featured first, then by pushed_at
         withTopics.sort((a,b)=>{
           const fa = FEATURED.includes(a.name) ? 0 : 1;
           const fb = FEATURED.includes(b.name) ? 0 : 1;
