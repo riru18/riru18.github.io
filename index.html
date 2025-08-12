@@ -18,25 +18,17 @@
       --muted: #9aa4b2;
       --brand: #4f9cf9;
       --brand-2: #7c4dff;
-      --ok: #16a34a;
-      --warn: #ca8a04;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 18px;
       --radius-sm: 12px;
       --maxw: 1120px;
     }
     @media (prefers-color-scheme: light){
-      :root{
-        --bg: #f7f8fb;
-        --panel: #ffffff;
-        --text: #0b0e14;
-        --muted: #4a5568;
-        --shadow: 0 10px 30px rgba(20,20,20,.08);
-      }
+      :root{ --bg:#f7f8fb; --panel:#fff; --text:#0b0e14; --muted:#4a5568; --shadow:0 10px 30px rgba(20,20,20,.08) }
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(79,156,249,.25), transparent 60%),radial-gradient(900px 500px at 110% 10%, rgba(124,77,255,.18), transparent 60%),var(--bg);color:var(--text);font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"}
+    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(79,156,249,.25), transparent 60%),radial-gradient(900px 500px at 110% 10%, rgba(124,77,255,.18), transparent 60%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
     a{color:inherit}
     .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
     header.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:40px 0}
@@ -51,12 +43,11 @@
     .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
     .btn{appearance:none;border:0;border-radius:999px;padding:12px 16px;font-weight:600;cursor:pointer;transition:transform .12s ease, box-shadow .2s ease}
     .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:white;box-shadow:0 8px 24px rgba(79,156,249,.35)}
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.16)}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.16);color:var(--text)}
     .btn:active{transform:translateY(1px)}
     .glass{position:relative;overflow:hidden}
     .glass:before{content:"";position:absolute;inset:0;background:radial-gradient(800px 300px at -10% -20%, rgba(79,156,249,.25), transparent 40%),radial-gradient(600px 300px at 110% 0%, rgba(124,77,255,.2), transparent 40%)}
 
-    /* Projects */
     section{margin:24px 0}
     .section-title{display:flex;align-items:baseline;justify-content:space-between;margin:8px 4px 14px}
     .section-title h2{font-size:22px;margin:0}
@@ -79,6 +70,8 @@
 
     footer{margin:40px 0 20px;color:var(--muted);text-align:center}
     .hidden{display:none !important}
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
@@ -94,16 +87,16 @@
           <span class="badge">Power BI</span>
           <span class="badge">GitHub Actions</span>
         </div>
-        <div class="cta">
-          <a class="btn primary" href="#projects">View projects</a>
-          <a class="btn secondary" href="https://github.com/riru18" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn secondary" href="mailto:ricardoruiz@proton.me">Email</a>
-          <a class="btn secondary" href="/resume.pdf">Resume</a>
+        <div class="cta" role="group" aria-label="Primary actions">
+          <button class="btn primary" data-action="scroll-projects" aria-controls="projects">View projects</button>
+          <button class="btn secondary" data-action="open" data-href="https://github.com/riru18">GitHub</button>
+          <button class="btn secondary" data-action="mailto" data-email="ricardoruiz@proton.me">Email</button>
+          <button class="btn secondary" data-action="open" data-href="/resume.pdf">Resume</button>
         </div>
       </div>
       <div class="panel" style="padding:22px">
         <h2 style="margin:0 0 10px;font-size:18px">Now</h2>
-        <p style="margin:0 0 8px;color:var(--muted)">Exploring factor automation with SQL.</p>
+        <p style="margin:0 0 8px;color:var(--muted)">Exploring factor automation with SQL for FTSE Russell metrics. Learning-by-shipping small utilities. Notes live in public repos.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
           <span class="pill">Open-source</span>
           <span class="pill">Data viz</span>
@@ -117,7 +110,8 @@
       <div class="section-title">
         <h2>Projects</h2>
         <div class="filters">
-          <input id="search" type="search" placeholder="Filter by name, topic, or language" />
+          <label class="visually-hidden" for="search">Filter repositories</label>
+          <input id="search" type="search" placeholder="Filter by name, topic, or language" autocomplete="off" />
         </div>
       </div>
       <div id="projects-grid" class="grid" aria-live="polite"></div>
@@ -132,14 +126,13 @@
   <script>
     const GH_USER = "riru18"; // change if needed
 
-    // Optional: pin specific repos to appear first
     const FEATURED = [
       // "Proyecto3",
       // "proyecto2",
       // "adventureworks-sql-snippets",
     ];
 
-    const HIDE_FORKS = true; // flip to show forks
+    const HIDE_FORKS = true;
     const EXCLUDE = new Set(["riru18.github.io"]);
 
     const grid = document.getElementById('projects-grid');
@@ -147,6 +140,29 @@
     const search = document.getElementById('search');
     const year = document.getElementById('year');
     year.textContent = new Date().getFullYear();
+
+    // Make buttons work in sandboxed previews and on GitHub Pages
+    function handleButtons(){
+      document.querySelectorAll('[data-action]')?.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-action');
+          if(action === 'scroll-projects'){
+            const section = document.getElementById('projects');
+            section?.scrollIntoView({behavior:'smooth', block:'start'});
+            return;
+          }
+          if(action === 'open'){
+            const href = btn.getAttribute('data-href');
+            if(href){ window.open(href, '_blank', 'noopener'); }
+            return;
+          }
+          if(action === 'mailto'){
+            const email = btn.getAttribute('data-email') || '';
+            window.location.href = `mailto:${email}`;
+          }
+        });
+      });
+    }
 
     function el(tag, props = {}, children = []){
       const n = document.createElement(tag);
@@ -248,6 +264,7 @@
     }
 
     search.addEventListener('input', applyFilter);
+    handleButtons();
     load();
   </script>
 </body>
