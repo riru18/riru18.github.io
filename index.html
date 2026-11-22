@@ -1,270 +1,669 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ricardo Ruiz — Portfolio</title>
-  <meta name="description" content="Ricardo Ruiz — projects, writing, and experiments." />
-  <meta property="og:title" content="Ricardo Ruiz — Portfolio" />
-  <meta property="og:description" content="Projects, writing, and experiments." />
+  <title>Ricardo Ruiz — Financial Data Analyst &amp; Analytics Automation</title>
+  <meta name="description" content="Ricardo Ruiz — Factor &amp; Financial Data Analyst at LSEG (London Stock Exchange Group). T-SQL performance engineering, Python &amp; BI automation, data quality leadership, and applied AI." />
+  <link rel="canonical" href="https://ricardoruiz.tech/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Social previews for recruiters & LinkedIn -->
+  <meta property="og:title" content="Ricardo Ruiz — Financial Data Analyst &amp; Analytics Automation" />
+  <meta property="og:description" content="Factor &amp; Financial Data Analyst at LSEG. ~75% faster T-SQL pipelines, 0% controllable index defects, 10% → 90% AI adoption in &lt;30 days." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ricardoruiz.tech/" />
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    :root{
-      --bg: #0b0e14;
-      --panel: #111522;
-      --text: #e6e6e6;
-      --muted: #9aa4b2;
-      --brand: #4f9cf9;
-      --brand-2: #7c4dff;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --maxw: 1120px;
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f7f8fb; --panel:#fff; --text:#0b0e14; --muted:#4a5568; --shadow:0 10px 30px rgba(20,20,20,.08) }
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(79,156,249,.25), transparent 60%),radial-gradient(900px 500px at 110% 10%, rgba(124,77,255,.18), transparent 60%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
-    a{color:inherit}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:24px}
-    header.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:40px 0}
-    @media (max-width:900px){header.hero{grid-template-columns:1fr;gap:18px}}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));border:1px solid rgba(255,255,255,.06);backdrop-filter:saturate(140%) blur(6px);box-shadow:var(--shadow);border-radius:var(--radius)}
-    .panel{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--radius)}
-    .hero .intro{padding:28px}
-    .hero h1{margin:0 0 10px;font-size:clamp(28px, 5vw, 48px);letter-spacing:.2px}
-    .hero p{margin:6px 0 18px;color:var(--muted);font-size:clamp(14px, 2vw, 18px)}
-    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
-    .badge{border:1px solid rgba(255,255,255,.14);padding:8px 12px;border-radius:999px;font-size:13px;white-space:nowrap}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .btn{appearance:none;border:0;border-radius:999px;padding:12px 16px;font-weight:600;cursor:pointer;transition:transform .12s ease, box-shadow .2s ease}
-    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:white;box-shadow:0 8px 24px rgba(79,156,249,.35)}
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.16);color:var(--text)}
-    .btn:active{transform:translateY(1px)}
-    .glass{position:relative;overflow:hidden}
-    .glass:before{content:"";position:absolute;inset:0;background:radial-gradient(800px 300px at -10% -20%, rgba(79,156,249,.25), transparent 40%),radial-gradient(600px 300px at 110% 0%, rgba(124,77,255,.2), transparent 40%);pointer-events:none;z-index:0}
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ricardo Ruiz — Financial Data Analyst &amp; Analytics Automation" />
+  <meta name="twitter:description" content="T-SQL automation, Python &amp; Power BI analytics, data quality leadership, and full-stack data tooling." />
+  <meta name="theme-color" content="#070a0f" />
 
-    section{margin:24px 0}
-    .section-title{display:flex;align-items:baseline;justify-content:space-between;margin:8px 4px 14px}
-    .section-title h2{font-size:22px;margin:0}
-    .section-title .filters{display:flex;gap:8px;align-items:center}
-    .section-title input[type="search"]{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:transparent;color:var(--text);min-width:220px}
+  <!-- Crisp geometric + monospace typography with fast swap fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
 
-    .grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:16px}
-    @media (max-width:1000px){.grid{grid-template-columns:repeat(2, minmax(0,1fr))}}
-    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  <!-- Apply saved theme before first paint to prevent flash -->
+  <script>
+    try {
+      const t = localStorage.getItem("rr.theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch {}
+  </script>
 
-    .proj{display:flex;flex-direction:column;gap:12px;padding:18px;border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-sm);background:linear-gradient(180deg, rgba(255,255,255,.025), rgba(0,0,0,.02))}
-    .proj:hover{transform:translateY(-2px);transition:transform .18s ease}
-    .proj .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
-    .proj .title{display:flex;gap:8px;align-items:center;font-weight:700}
-    .pill{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:var(--muted)}
-    .tags{display:flex;gap:6px;flex-wrap:wrap}
-    .desc{color:var(--muted)}
-    .links{display:flex;gap:10px;margin-top:auto}
-    .links a{display:inline-flex;gap:6px;align-items:center;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.14);text-decoration:none}
-
-    footer{margin:40px 0 20px;color:var(--muted);text-align:center}
-    .hidden{display:none !important}
-    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
-    html{scroll-behavior:smooth}
-  </style>
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ricardo Ruiz",
+    "url": "https://ricardoruiz.tech",
+    "email": "mailto:ricardo@ricardoruiz.tech",
+    "jobTitle": "Factor Analyst / Financial Data Analyst",
+    "worksFor": { "@type": "Organization", "name": "LSEG (London Stock Exchange Group)" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Heredia", "addressCountry": "CR" },
+    "sameAs": [
+      "https://www.linkedin.com/in/ruiz-ricardo",
+      "https://github.com/riru18"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <div class="intro glass card">
-        <h1>Ricardo Ruiz</h1>
-        <p>Financial data analyst and CS student building practical tools: SQL automation, clean visualizations, and small web apps deployed on GitHub Pages.</p>
-        <div class="badges">
-          <span class="badge">T‑SQL</span>
-          <span class="badge">Python</span>
-          <span class="badge">Java</span>
-          <span class="badge">Power BI</span>
-          <span class="badge">GitHub Actions</span>
-        </div>
-        <div class="cta" role="group" aria-label="Primary actions">
-          <button class="btn primary" data-action="scroll-projects" aria-controls="projects">View projects</button>
-          <button class="btn secondary" data-action="open" data-href="https://github.com/riru18">GitHub</button>
-          <button class="btn secondary" data-action="mailto" data-email="ricardoruiz@proton.me">Email</button>
-          <button class="btn secondary" data-action="open" data-href="/resume.pdf">Resume</button>
-        </div>
-      </div>
-      <div class="panel" style="padding:22px">
-        <h2 style="margin:0 0 10px;font-size:18px">Now</h2>
-        <p style="margin:0 0 8px;color:var(--muted)">Exploring factor automation with SQL.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-          <span class="pill">Open-source</span>
-          <span class="pill">Data viz</span>
-          <span class="pill">CLI tools</span>
-          <span class="pill">Education</span>
-        </div>
-      </div>
-    </header>
+  <!-- Sticky Navigation -->
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Ricardo Ruiz home">
+        <span class="brand-mark" aria-hidden="true">RR</span>
+        <span>Ricardo Ruiz<span class="brand-dot">.</span></span>
+      </a>
 
-    <section id="projects">
-      <div class="section-title">
-        <h2>Projects</h2>
-        <div class="filters">
-          <label class="visually-hidden" for="search">Filter repositories</label>
-          <input id="search" type="search" placeholder="Filter by name, topic, or language" autocomplete="off" />
+      <nav class="nav-links" aria-label="Primary sections">
+        <a href="#impact" data-en="Focus" data-es="Enfoque">Focus</a>
+        <a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a>
+        <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
+        <a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a>
+        <a href="#education" data-en="Education" data-es="Educación">Education</a>
+        <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+      </nav>
+
+      <div class="nav-controls">
+        <div class="pill-toggle" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="en" class="on" aria-pressed="true">EN</button>
+          <button type="button" data-lang-btn="es" aria-pressed="false">ES</button>
         </div>
+
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch theme">
+          <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/>
+          </svg>
+          <svg id="icon-moon" class="is-hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <a class="nav-cta" href="/resume.pdf" target="_blank" rel="noopener noreferrer" data-en="Resume PDF" data-es="CV en PDF">Resume PDF</a>
       </div>
-      <div id="projects-grid" class="grid" aria-live="polite"></div>
-      <div id="empty" class="hidden" style="margin:10px 4px;color:var(--muted)">No repositories match your filter.</div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="status-pill">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-en="Open to Senior Data, Financial Analytics &amp; Automation Roles" data-es="Abierto a roles de Datos, Analítica Financiera y Automatización">Open to Senior Data, Financial Analytics &amp; Automation Roles</span>
+          </div>
+
+          <h1 data-en="Turning complex financial data into <span class='accent-text'>zero-defect automation.</span>" data-es="Convirtiendo datos financieros complejos en <span class='accent-text'>automatización sin errores.</span>">
+            Turning complex financial data into <span class="accent-text">zero-defect automation.</span>
+          </h1>
+
+          <p class="hero-lead" data-en="I'm <strong>Ricardo Ruiz</strong> — Factor &amp; Financial Data Analyst at <strong>LSEG (London Stock Exchange Group)</strong> with 5+ years across LSEG and Amazon. I specialize in high-speed T-SQL automation, institutional data quality, Python/BI tooling, and pragmatic AI adoption." data-es="Soy <strong>Ricardo Ruiz</strong> — Factor &amp; Financial Data Analyst en <strong>LSEG (London Stock Exchange Group)</strong> con más de 5 años en LSEG y Amazon. Me especializo en automatización T-SQL de alto rendimiento, calidad de datos institucional, Python/BI y adopción práctica de IA.">
+            I'm <strong>Ricardo Ruiz</strong> — Factor &amp; Financial Data Analyst at <strong>LSEG (London Stock Exchange Group)</strong> with 5+ years across LSEG and Amazon. I specialize in high-speed T-SQL automation, institutional data quality, Python/BI tooling, and pragmatic AI adoption.
+          </p>
+
+          <div class="hero-meta">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Heredia, Costa Rica · Remote / Hybrid
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span data-en="EN (C2) · ES (Native) · PT (B1)" data-es="ES (Nativo) · EN (C2) · PT (B1)">EN (C2) · ES (Native) · PT (B1)</span>
+            </span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+              <span data-en="Download Resume" data-es="Descargar CV">Download Resume</span>
+            </a>
+
+            <button class="btn btn-secondary" type="button" data-copy-email>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span data-en="Copy Email" data-es="Copiar Correo">Copy Email</span>
+            </button>
+
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/ruiz-ricardo" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              LinkedIn
+            </a>
+
+            <a class="btn btn-ghost" href="https://github.com/riru18" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Quantitative Career Telemetry Panel -->
+        <aside class="telemetry-card" aria-label="Verified career metrics">
+          <div class="telemetry-head">
+            <span class="telemetry-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span>IMPACT_TELEMETRY · LSEG / AMAZON</span>
+          </div>
+          <div class="telemetry-body">
+            <div class="metric-grid">
+              <div class="metric-box">
+                <div class="metric-val green">~75%</div>
+                <div class="metric-label" data-en="Faster T-SQL query &amp; batch runtimes (~40 → ~10 min)" data-es="Reducción de tiempos T-SQL (~40 → ~10 min)">Faster T-SQL query &amp; batch runtimes (~40 → ~10 min)</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-val cyan">10→90%</div>
+                <div class="metric-label" data-en="Team AI &amp; dev tool adoption lifted in under 30 days" data-es="Adopción de IA y herramientas dev en menos de 30 días">Team AI &amp; dev tool adoption lifted in under 30 days</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-val green">0%</div>
+                <div class="metric-label" data-en="Controllable index release defects sustained all year" data-es="Defectos controlables en lanzamientos de índices todo el año">Controllable index release defects sustained all year</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-val">10,000+</div>
+                <div class="metric-label" data-en="Securities validated across global equity indices" data-es="Valores validados en índices bursátiles globales">Securities validated across global equity indices</div>
+              </div>
+            </div>
+
+            <!-- Visual Data Comparison Bars -->
+            <div class="telemetry-viz" aria-label="Performance comparison charts">
+              <div class="viz-row">
+                <div class="viz-head">
+                  <span data-en="T-SQL Batch Runtime" data-es="Tiempo de Lote T-SQL">T-SQL Batch Runtime</span>
+                  <span>~40m → ~10m (-75%)</span>
+                </div>
+                <div class="viz-track" role="img" aria-label="T-SQL runtime reduced from 40 minutes to 10 minutes">
+                  <span class="viz-before w100"></span>
+                  <span class="viz-after w25"></span>
+                </div>
+              </div>
+              <div class="viz-row">
+                <div class="viz-head">
+                  <span data-en="Team AI Tool Adoption" data-es="Adopción de Herramientas IA">Team AI Tool Adoption</span>
+                  <span>10% → 90% (&lt;30d)</span>
+                </div>
+                <div class="viz-track" role="img" aria-label="Team AI tool adoption increased from 10 percent to 90 percent">
+                  <span class="viz-before w10"></span>
+                  <span class="viz-after w90"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="telemetry-foot">
+              <div class="telemetry-line">
+                <span data-en="CURRENT_ROLE" data-es="ROL_ACTUAL">CURRENT_ROLE</span>
+                <span>LSEG · Factor / Financial Data Analyst</span>
+              </div>
+              <div class="telemetry-line">
+                <span data-en="PRIOR_EXPERIENCE" data-es="EXPERIENCIA_PREVIA">PRIOR_EXPERIENCE</span>
+                <span>Amazon · Data Risk &amp; Fraud Analytics</span>
+              </div>
+              <div class="telemetry-line">
+                <span data-en="CONTACT" data-es="CONTACTO">CONTACT</span>
+                <span>ricardo@ricardoruiz.tech</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <footer>
-      <div>© <span id="year"></span> Ricardo Ruiz</div>
-    </footer>
-  </div>
+    <!-- Recruiter Role-Fit Lens -->
+    <section id="impact" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-en="Recruiter Quick View" data-es="Resumen para Reclutadores">Recruiter Quick View</span>
+            <h2 data-en="Where I create immediate leverage" data-es="Dónde genero impacto inmediato">Where I create immediate leverage</h2>
+            <p class="section-sub" data-en="Switch lenses below to see how my track record maps to your open role." data-es="Cambia de perspectiva para ver cómo mi experiencia encaja con tu vacante.">Switch lenses below to see how my track record maps to your open role.</p>
+          </div>
+        </div>
 
-  <script>
-    const GH_USER = "riru18"; // change if needed
+        <div class="lens-bar" role="group" aria-label="Role fit lens">
+          <button type="button" class="lens-btn active" data-lens="financial" aria-pressed="true" data-en="Financial &amp; Index Data" data-es="Datos Financieros e Índices">Financial &amp; Index Data</button>
+          <button type="button" class="lens-btn" data-lens="analytics" aria-pressed="false" data-en="Analytics Engineering &amp; SQL" data-es="Ingeniería de Analítica y SQL">Analytics Engineering &amp; SQL</button>
+          <button type="button" class="lens-btn" data-lens="ai" aria-pressed="false" data-en="Applied AI &amp; Data Science" data-es="IA Aplicada y Ciencia de Datos">Applied AI &amp; Data Science</button>
+        </div>
 
-    const FEATURED = [
-      // "Proyecto3",
-      // "proyecto2",
-      // "adventureworks-sql-snippets",
-    ];
+        <div class="lens-panel" aria-live="polite">
+          <div>
+            <h3 id="lens-title">Financial &amp; Index Data Specialist</h3>
+            <p id="lens-body"></p>
+          </div>
+          <div id="lens-tags" class="lens-tags"></div>
+        </div>
+      </div>
+    </section>
 
-    const HIDE_FORKS = true;
-    const EXCLUDE = new Set(["riru18.github.io"]);
+    <!-- Experience -->
+    <section id="experience" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-en="Track Record" data-es="Trayectoria">Track Record</span>
+            <h2 data-en="Experience" data-es="Experiencia Profesional">Experience</h2>
+            <p class="section-sub" data-en="Measurable outcomes across global financial markets, enterprise hardware supply chains, and multilingual risk operations." data-es="Resultados medibles en mercados financieros globales, cadenas de suministro tecnológicas y operaciones multilingües de riesgo.">Measurable outcomes across global financial markets, enterprise hardware supply chains, and multilingual risk operations.</p>
+          </div>
+        </div>
 
-    const grid = document.getElementById('projects-grid');
-    const empty = document.getElementById('empty');
-    const search = document.getElementById('search');
-    const year = document.getElementById('year');
-    year.textContent = new Date().getFullYear();
+        <div class="timeline">
+          <!-- LSEG -->
+          <article class="role-card current">
+            <div class="role-top">
+              <div>
+                <div class="role-company">
+                  <h3>LSEG (London Stock Exchange Group)</h3>
+                  <span class="company-tag" data-en="Current" data-es="Actual">Current</span>
+                </div>
+                <div class="role-title">Factor Analyst / Financial Data Analyst · Costa Rica</div>
+              </div>
+              <div class="role-date" data-en="Aug 2023 – Present" data-es="Ago 2023 – Actualidad">Aug 2023 – Present</div>
+            </div>
 
+            <div class="impact-pills">
+              <span class="impact-pill"><strong>~75%</strong> <span data-en="faster SQL batches" data-es="lotes SQL más rápidos">faster SQL batches</span></span>
+              <span class="impact-pill"><strong>10% → 90%</strong> <span data-en="AI tool adoption" data-es="adopción de IA">AI tool adoption</span></span>
+              <span class="impact-pill"><strong>1,904+</strong> <span data-en="J.P. Morgan AWD securities" data-es="valores J.P. Morgan AWD">J.P. Morgan AWD securities</span></span>
+              <span class="impact-pill"><strong>0%</strong> <span data-en="controllable defects" data-es="defectos controlables">controllable defects</span></span>
+            </div>
 
-    function handleButtons(){
-      document.querySelectorAll('[data-action]')?.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const action = btn.getAttribute('data-action');
-          if(action === 'scroll-projects'){
-            const section = document.getElementById('projects');
-            section?.scrollIntoView({behavior:'smooth', block:'start'});
-            return;
-          }
-          if(action === 'open'){
-            const href = btn.getAttribute('data-href');
-            if(href){ window.open(href, '_blank', 'noopener'); }
-            return;
-          }
-          if(action === 'mailto'){
-            const email = btn.getAttribute('data-email') || '';
-            window.location.href = `mailto:${email}`;
-          }
-        });
-      });
-    }
+            <ul class="role-bullets">
+              <li data-en="Led a department-wide automation initiative with <strong>6 analysts across the U.S. and Costa Rica</strong>, standardizing data validation, cleansing, and processing for equity indices covering <strong>500 to 10,000+ securities</strong>." data-es="Lideré una iniciativa departamental de automatización con <strong>6 analistas en EE. UU. y Costa Rica</strong>, estandarizando validación y limpieza para índices de <strong>500 a 10,000+ valores</strong>.">Led a department-wide automation initiative with <strong>6 analysts across the U.S. and Costa Rica</strong>, standardizing data validation, cleansing, and processing for equity indices covering <strong>500 to 10,000+ securities</strong>.</li>
+              <li data-en="Spearheaded <strong>AI integration</strong>, lifting team adoption of AI and standardized development tools from <strong>10% to 90% in under a month</strong> via license allocation, stakeholder alignment, and live proofs of concept." data-es="Impulsé la <strong>integración de IA</strong>, elevando la adopción de herramientas estandarizadas y de IA del <strong>10% al 90% en menos de un mes</strong> mediante pruebas de concepto y alineación con liderazgo.">Spearheaded <strong>AI integration</strong>, lifting team adoption of AI and standardized development tools from <strong>10% to 90% in under a month</strong> via license allocation, stakeholder alignment, and live proofs of concept.</li>
+              <li data-en="Engineered parameterized <strong>T-SQL automation</strong> for validation and index review, cutting query and batch runtimes by <strong>~75% (~40 → ~10 min)</strong> through indexing strategies, CTEs, and temp tables." data-es="Construí automatización parametrizada en <strong>T-SQL</strong>, reduciendo tiempos de consulta y lotes en <strong>~75% (~40 → ~10 min)</strong> mediante indexación, CTEs y tablas temporales.">Engineered parameterized <strong>T-SQL automation</strong> for validation and index review, cutting query and batch runtimes by <strong>~75% (~40 → ~10 min)</strong> through indexing strategies, CTEs, and temp tables.</li>
+              <li data-en="Completed <strong>100% of the J.P. Morgan AWD index review (1,904+ securities) in under 2 weeks</strong> with zero controllable defects; serve as final data-quality authority and audit liaison for index releases." data-es="Completé el <strong>100% de la revisión del índice J.P. Morgan AWD (1,904+ valores) en menos de 2 semanas</strong> con cero defectos; fungiendo como autoridad final de calidad de datos y enlace de auditoría.">Completed <strong>100% of the J.P. Morgan AWD index review (1,904+ securities) in under 2 weeks</strong> with zero controllable defects; serve as final data-quality authority and audit liaison for index releases.</li>
+              <li data-en="Diagnose missing <strong>FTSE Russell</strong> factor values and validate <strong>Worldscope</strong> data using T-SQL and <strong>Hampel outlier detection</strong>; provide on-call production support and onboard new hires on T-SQL, Git, and GitHub Copilot." data-es="Diagnostico factores faltantes de <strong>FTSE Russell</strong> y valido datos de <strong>Worldscope</strong> con T-SQL y <strong>detección de atípicos Hampel</strong>; brindo soporte en producción y capacito a nuevos ingresos en T-SQL, Git y GitHub Copilot.">Diagnose missing <strong>FTSE Russell</strong> factor values and validate <strong>Worldscope</strong> data using T-SQL and <strong>Hampel outlier detection</strong>; provide on-call production support and onboard new hires on T-SQL, Git, and GitHub Copilot.</li>
+            </ul>
+          </article>
 
-    function el(tag, props = {}, children = []){
-      const n = document.createElement(tag);
-      Object.assign(n, props);
-      for(const c of children){ n.append(c); }
-      return n;
-    }
+          <!-- Self-Employed Contract -->
+          <article class="role-card">
+            <div class="role-top">
+              <div>
+                <div class="role-company">
+                  <h3 data-en="Contract Data Analyst" data-es="Analista de Datos Independiente">Contract Data Analyst</h3>
+                  <span class="company-tag neutral" data-en="Consulting · NDA" data-es="Consultoría · NDA">Consulting · NDA</span>
+                </div>
+                <div class="role-title" data-en="Self-Employed · U.S. &amp; European Operations (Remote from Costa Rica)" data-es="Independiente · Operaciones EE. UU. y Europa (Remoto desde Costa Rica)">Self-Employed · U.S. &amp; European Operations (Remote from Costa Rica)</div>
+              </div>
+              <div class="role-date" data-en="Sep 2025 – Sep 2026" data-es="Sep 2025 – Sep 2026">Sep 2025 – Sep 2026</div>
+            </div>
 
-    function repoCard(r){
-      const topics = (r.topics||[]).slice(0,6);
-      const hasHomepage = r.homepage && !/^https?:\/\/github\.com\//i.test(r.homepage);
-      const homepage = hasHomepage ? r.homepage : `/${r.name}/`;
-      const lang = r.language || "";
-      const star = `★ ${r.stargazers_count}`;
-      const fork = `⑂ ${r.forks_count}`;
+            <div class="impact-pills">
+              <span class="impact-pill"><strong>PLX + Apps Script</strong> <span data-en="reporting pipelines" data-es="pipelines de reportes">reporting pipelines</span></span>
+              <span class="impact-pill"><strong>US &amp; EU</strong> <span data-en="rack-build inventory forecasting" data-es="pronóstico de inventario">rack-build inventory forecasting</span></span>
+            </div>
 
-      const title = el('div', {className:'title'}, [
-        el('span', {textContent:r.name}),
-        FEATURED.includes(r.name) ? el('span', {className:'pill', textContent:'Featured'}) : null,
-      ].filter(Boolean));
+            <ul class="role-bullets">
+              <li data-en="Delivered automated inventory reporting for a <strong>confidential technology client's networking rack builds</strong> across U.S. and European sites using <strong>PLX scripts, Apps Script automations, and validated Google Sheets models</strong>." data-es="Entregué reportes automatizados de inventario para despliegues de racks de red de un <strong>cliente tecnológico confidencial</strong> en EE. UU. y Europa usando <strong>scripts PLX, Apps Script y modelos validados en Google Sheets</strong>.">Delivered automated inventory reporting for a <strong>confidential technology client's networking rack builds</strong> across U.S. and European sites using <strong>PLX scripts, Apps Script automations, and validated Google Sheets models</strong>.</li>
+              <li data-en="Forecasted material shortages from supplier lead times, recommended mitigation options, and coordinated cross-site inventory transfers and escalations." data-es="Pronostiqué faltantes a partir de tiempos de entrega, recomendé planes de mitigación y coordiné traslados de inventario y escalamientos entre sitios.">Forecasted material shortages from supplier lead times, recommended mitigation options, and coordinated cross-site inventory transfers and escalations.</li>
+            </ul>
+          </article>
 
-      const desc = el('div', {className:'desc', textContent: r.description || 'No description yet.'});
+          <!-- Amazon -->
+          <article class="role-card">
+            <div class="role-top">
+              <div>
+                <div class="role-company">
+                  <h3>Amazon</h3>
+                  <span class="company-tag neutral" data-en="3 Years · Promoted" data-es="3 Años · Promovido">3 Years · Promoted</span>
+                </div>
+                <div class="role-title">Data Risk Management Coordinator (2021–2023) &amp; Data Investigation Specialist I (2020–2021) · Costa Rica</div>
+              </div>
+              <div class="role-date" data-en="Aug 2020 – Aug 2023" data-es="Ago 2020 – Ago 2023">Aug 2020 – Aug 2023</div>
+            </div>
 
-      const tags = el('div', {className:'tags'}, [
-        lang ? el('span', {className:'pill', textContent: lang}) : null,
-        ...topics.map(t => el('span', {className:'pill', textContent: t}))
-      ].filter(Boolean));
+            <div class="impact-pills">
+              <span class="impact-pill"><strong>+14%</strong> <span data-en="above productivity targets" data-es="sobre metas de productividad">above productivity targets</span></span>
+              <span class="impact-pill"><strong>0%</strong> <span data-en="defect rate (12 consecutive months)" data-es="tasa de defectos (12 meses seguidos)">defect rate (12 consecutive months)</span></span>
+              <span class="impact-pill"><strong>3</strong> <span data-en="languages investigated" data-es="idiomas investigados">languages investigated</span></span>
+            </div>
 
-      const meta = el('div', {className:'meta'}, [
-        el('span', {textContent: star}),
-        el('span', {textContent: fork}),
-        el('span', {textContent: new Date(r.pushed_at).toLocaleDateString(undefined, {year:'numeric', month:'short'}) })
-      ]);
+            <ul class="role-bullets">
+              <li data-en="Investigated multilingual Kindle Direct Publishing content (EN, ES, PT) for fraud, consistently outperforming productivity targets by <strong>14%+</strong> while maintaining a <strong>0% defect rate over the final 12 months</strong>." data-es="Investigué fraude en contenido multilingüe de Kindle Direct Publishing (EN, ES, PT), superando las metas de productividad en <strong>+14%</strong> con <strong>0% de defectos durante los últimos 12 meses</strong>.">Investigated multilingual Kindle Direct Publishing content (EN, ES, PT) for fraud, consistently outperforming productivity targets by <strong>14%+</strong> while maintaining a <strong>0% defect rate over the final 12 months</strong>.</li>
+              <li data-en="Maintained and refined <strong>MySQL queries and master trackers</strong> underpinning real-time data integrity and fraud analytics." data-es="Mantuve y optimicé consultas <strong>MySQL y registros maestros</strong> que respaldaban la integridad de datos e investigaciones de fraude.">Maintained and refined <strong>MySQL queries and master trackers</strong> underpinning real-time data integrity and fraud analytics.</li>
+              <li data-en="Built <strong>Excel VBA automation macros</strong> that improved investigation accuracy, cleaned large datasets, and codified emerging fraud patterns into team SOPs." data-es="Desarrollé <strong>macros en Excel VBA</strong> que aumentaron la precisión investigativa, limpié grandes volúmenes de datos y documenté patrones de fraude en SOPs del equipo.">Built <strong>Excel VBA automation macros</strong> that improved investigation accuracy, cleaned large datasets, and codified emerging fraud patterns into team SOPs.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      const links = el('div', {className:'links'}, [
-        el('a', {href: homepage, target:'_blank', rel:'noopener', textContent:'Open'}),
-        el('a', {href: r.html_url, target:'_blank', rel:'noopener', textContent:'Source'})
-      ]);
+    <!-- Featured Projects -->
+    <section id="projects" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-en="Engineering &amp; Analytics Showcase" data-es="Portafolio Técnico">Engineering &amp; Analytics Showcase</span>
+            <h2 data-en="Featured Projects" data-es="Proyectos Destacados">Featured Projects</h2>
+            <p class="section-sub" data-en="Production systems, automation pipelines, machine learning benchmarks, and relational database architecture." data-es="Sistemas en producción, pipelines de automatización, comparativas de machine learning y arquitectura de bases de datos.">Production systems, automation pipelines, machine learning benchmarks, and relational database architecture.</p>
+          </div>
+        </div>
 
-      const card = el('article', {className:'proj card'}, [title, desc, tags, meta, links]);
-      return card;
-    }
+        <div class="projects-grid">
+          <!-- Flagship Case Study: Job Hunt OS -->
+          <article class="project-card flagship">
+            <div>
+              <div class="project-head">
+                <span class="project-type" data-en="Flagship Full-Stack System · In Production" data-es="Proyecto Insignia Full-Stack · En Producción">Flagship Full-Stack System · In Production</span>
+                <span class="company-tag" data-en="Multi-Tenant Beta Live" data-es="Beta Multiusuario Activa">Multi-Tenant Beta Live</span>
+              </div>
+              <h3 class="mt-xs">Job Hunt OS — Automated Career Intelligence Platform</h3>
+              <p class="project-desc mt-xs" data-en="Engineered an end-to-end job discovery and pipeline management operating system that scans 100+ company ATS career portals directly, computes explainable CV-to-job match scores (combining rule extraction with multilingual Workers AI embeddings), tracks applications with ghost-job &amp; company cooldown logic, and delivers 2-way Telegram alerts." data-es="Diseñé un sistema operativo completo para búsqueda de empleo que monitorea directamente más de 100 portales ATS corporativos, calcula puntajes explicables de compatibilidad CV-vacante (reglas + embeddings multilingües de Workers AI), gestiona el pipeline con detección de vacantes fantasma y envía alertas interactivas por Telegram.">
+                Engineered an end-to-end job discovery and pipeline management operating system that scans 100+ company ATS career portals directly, computes explainable CV-to-job match scores (combining rule extraction with multilingual Workers AI embeddings), tracks applications with ghost-job &amp; company cooldown logic, and delivers 2-way Telegram alerts.
+              </p>
 
-    function applyFilter(){
-      const q = search.value.trim().toLowerCase();
-      let any = false;
-      for(const card of grid.children){
-        const hay = card.getAttribute('data-haystack');
-        const show = !q || hay.includes(q);
-        card.style.display = show ? '' : 'none';
-        if(show) any = true;
-      }
-      empty.classList.toggle('hidden', any);
-    }
+              <div class="tag-list mt-sm">
+                <span class="tag highlight">TypeScript &amp; Hono</span>
+                <span class="tag highlight">Python Scrapers</span>
+                <span class="tag">Cloudflare Workers + Durable Objects</span>
+                <span class="tag">SQLite / D1 + R2</span>
+                <span class="tag">Workers AI (bge-m3)</span>
+                <span class="tag">Preact PWA</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">Telegram Bot API</span>
+              </div>
 
-    async function load(){
-      try{
-        const perPage = 100;
-        const url = `https://api.github.com/users/${GH_USER}/repos?per_page=${perPage}&sort=updated`;
-        const res = await fetch(url, {headers:{'Accept':'application/vnd.github+json'}});
-        if(!res.ok) throw new Error(`GitHub API ${res.status}`);
-        let repos = await res.json();
+              <div class="project-links mt-md">
+                <a class="link-pill" href="https://github.com/riru18/job-radar-template" target="_blank" rel="noopener noreferrer">
+                  <span data-en="Open-Source Scraper Template" data-es="Plantilla Open-Source del Radar">Open-Source Scraper Template</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </a>
+                <button type="button" class="link-pill" data-copy-email>
+                  <span data-en="Ask for a live walkthrough" data-es="Pedir demo en vivo">Ask for a live walkthrough</span>
+                </button>
+              </div>
+            </div>
 
-        repos = repos.filter(r => !EXCLUDE.has(r.name) && (!HIDE_FORKS || !r.fork));
+            <div class="arch-box">
+              <div class="arch-title" data-en="Architecture Highlights" data-es="Arquitectura Destacada">Architecture Highlights</div>
+              <ul class="arch-list">
+                <li data-en="<strong>Per-user data isolation:</strong> 1 Durable Object with private SQLite + prefixed R2 storage per tenant." data-es="<strong>Aislamiento por usuario:</strong> 1 Durable Object con SQLite privado y R2 prefijado por cuenta."><strong>Per-user data isolation:</strong> 1 Durable Object with private SQLite + prefixed R2 storage per tenant.</li>
+                <li data-en="<strong>Privacy-first CV parsing:</strong> PDFs parsed locally on-device via pdf.js; zero sensitive contact data sent to LLMs." data-es="<strong>Privacidad por diseño:</strong> CV analizado localmente en el dispositivo con pdf.js; sin enviar datos de contacto a LLMs."><strong>Privacy-first CV parsing:</strong> PDFs parsed locally on-device via pdf.js; zero sensitive contact data sent to LLMs.</li>
+                <li data-en="<strong>Explainable 0–100 scoring:</strong> Skills lexicon, seniority fit, location tiering (EN/ES), and cosine similarity." data-es="<strong>Puntaje explicable 0–100:</strong> Léxico de habilidades, experiencia, ubicación (EN/ES) y similitud semántica."><strong>Explainable 0–100 scoring:</strong> Skills lexicon, seniority fit, location tiering (EN/ES), and cosine similarity.</li>
+                <li data-en="<strong>390+ automated tests:</strong> Full Vitest SQLite integration suite + Python unittest classification fixtures." data-es="<strong>390+ pruebas automatizadas:</strong> Suite Vitest con SQLite real + pruebas unitarias Python."><strong>390+ automated tests:</strong> Full Vitest SQLite integration suite + Python unittest classification fixtures.</li>
+              </ul>
+            </div>
+          </article>
 
-        // Fetch topics for each repo
-        const withTopics = await Promise.all(repos.map(async r => {
-          try{
-            const tr = await fetch(`https://api.github.com/repos/${GH_USER}/${r.name}/topics`, {headers:{'Accept':'application/vnd.github.mercy-preview+json'}});
-            if(tr.ok){
-              const data = await tr.json();
-              r.topics = data.names || [];
-            }
-          }catch(e){/* ignore */}
-          return r;
-        }));
+          <!-- Career-Page Monitoring Pipeline -->
+          <article class="project-card">
+            <div class="project-head">
+              <span class="project-type cyan" data-en="Automation Pipeline · Open Source" data-es="Pipeline de Automatización · Open Source">Automation Pipeline · Open Source</span>
+            </div>
+            <h3>Career-Page Monitoring Pipeline</h3>
+            <p class="project-desc" data-en="Scheduled serverless pipeline on GitHub Actions that queries company ATS endpoints (Workday, Greenhouse, Lever, SmartRecruiters, and more) and pushes instant filtered alerts to Telegram — removing dependency on noisy job boards." data-es="Pipeline programado en GitHub Actions que consulta directamente portales ATS (Workday, Greenhouse, Lever, SmartRecruiters, etc.) y envía alertas filtradas al instante por Telegram, eliminando la dependencia de bolsas de empleo lentas.">
+              Scheduled serverless pipeline on GitHub Actions that queries company ATS endpoints (Workday, Greenhouse, Lever, SmartRecruiters, and more) and pushes instant filtered alerts to Telegram — removing dependency on noisy job boards.
+            </p>
+            <div class="tag-list">
+              <span class="tag highlight">Python</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Telegram Bot API</span>
+              <span class="tag">ATS REST APIs</span>
+            </div>
+            <div class="project-links">
+              <a class="link-pill" href="https://github.com/riru18/job-radar-template" target="_blank" rel="noopener noreferrer">
+                <span>GitHub Repository</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </article>
 
-        withTopics.sort((a,b)=>{
-          const fa = FEATURED.includes(a.name) ? 0 : 1;
-          const fb = FEATURED.includes(b.name) ? 0 : 1;
-          if(fa !== fb) return fa - fb;
-          return new Date(b.pushed_at) - new Date(a.pushed_at);
-        });
+          <!-- Machine Learning Benchmark -->
+          <article class="project-card">
+            <div class="project-head">
+              <span class="project-type amber" data-en="Data Science &amp; ML · TEC Costa Rica" data-es="Ciencia de Datos y ML · TEC Costa Rica">Data Science &amp; ML · TEC Costa Rica</span>
+            </div>
+            <h3>ML Classification Algorithm Benchmark</h3>
+            <p class="project-desc" data-en="End-to-end comparative evaluation of six supervised classification algorithms following disciplined preprocessing: statistical imputation, Min–Max feature scaling, label/one-hot encoding, and rigorous model comparison on Precision, Recall, F1-score, and ROC-AUC." data-es="Evaluación comparativa completa de seis algoritmos supervisados de clasificación tras un preprocesamiento riguroso: imputación estadística, escalado Min–Max, codificación categórica y evaluación mediante Precision, Recall, F1 y ROC-AUC.">
+              End-to-end comparative evaluation of six supervised classification algorithms following disciplined preprocessing: statistical imputation, Min–Max feature scaling, label/one-hot encoding, and rigorous model comparison on Precision, Recall, F1-score, and ROC-AUC.
+            </p>
+            <div class="tag-list">
+              <span class="tag highlight">Python</span>
+              <span class="tag highlight">Pandas &amp; Polars</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">ROC-AUC / F1</span>
+            </div>
+            <div class="project-links">
+              <a class="link-pill" href="https://github.com/riru18/Aprendizaje_Automatico_Repo" target="_blank" rel="noopener noreferrer">
+                <span>GitHub Repository</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </article>
 
-        // Render
-        grid.textContent = '';
-        for(const r of withTopics){
-          const card = repoCard(r);
-          const hay = [r.name, r.description||'', r.language||'', ...(r.topics||[])].join(' ').toLowerCase();
-          card.setAttribute('data-haystack', hay);
-          grid.append(card);
-        }
-        applyFilter();
-      }catch(err){
-        grid.innerHTML = `<div class="panel" style="padding:18px">Failed to load repositories. You can still browse them on <a href="https://github.com/${GH_USER}">GitHub</a>.</div>`;
-        console.error(err);
-      }
-    }
+          <!-- CourierFlash 3NF DB -->
+          <article class="project-card">
+            <div class="project-head">
+              <span class="project-type" data-en="Database Engineering · SQL Server" data-es="Ingeniería de Datos · SQL Server">Database Engineering · SQL Server</span>
+            </div>
+            <h3>CourierFlash 3NF Relational Database</h3>
+            <p class="project-desc" data-en="Designed and implemented a fully normalized 3NF courier-management relational database from a crow's-foot ER model, complete with transactional stored procedures, custom functions, integrity validation queries, and ~300 rows of realistic test data." data-es="Diseño e implementación completa de una base de datos relacional en 3FN para gestión de mensajería a partir de modelo ER, incluyendo procedimientos almacenados transaccionales, funciones, consultas de validación y ~300 registros de prueba.">
+              Designed and implemented a fully normalized 3NF courier-management relational database from a crow's-foot ER model, complete with transactional stored procedures, custom functions, integrity validation queries, and ~300 rows of realistic test data.
+            </p>
+            <div class="tag-list">
+              <span class="tag highlight">T-SQL / SQL Server</span>
+              <span class="tag">3NF Modeling</span>
+              <span class="tag">Stored Procedures</span>
+              <span class="tag">Data Integrity</span>
+            </div>
+            <div class="project-links">
+              <a class="link-pill" href="https://github.com/riru18/UNED_BD_II_2025" target="_blank" rel="noopener noreferrer">
+                <span>GitHub Repository</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </article>
 
-    search.addEventListener('input', applyFilter);
-    handleButtons();
-    load();
-  </script>
+          <!-- Performance & QA Practice -->
+          <article class="project-card">
+            <div class="project-head">
+              <span class="project-type cyan" data-en="Enterprise Data Engineering · LSEG" data-es="Ingeniería de Datos · LSEG">Enterprise Data Engineering · LSEG</span>
+            </div>
+            <h3 data-en="Parameterized Index Validation Framework" data-es="Framework Parametrizado de Validación de Índices">Parameterized Index Validation Framework</h3>
+            <p class="project-desc" data-en="Architected reusable SQL Server validation workflows for global equity index rebalances (500–10,000+ securities), combining Hampel statistical outlier detection, CTE optimization, and automated audit-trail checks — slashing batch execution from ~40 to ~10 minutes." data-es="Diseñé flujos reutilizables en SQL Server para rebalanceos de índices bursátiles (500–10,000+ valores), combinando detección estadística de atípicos Hampel, optimización de CTEs y controles de auditoría — bajando la ejecución de ~40 a ~10 minutos.">
+              Architected reusable SQL Server validation workflows for global equity index rebalances (500–10,000+ securities), combining Hampel statistical outlier detection, CTE optimization, and automated audit-trail checks — slashing batch execution from ~40 to ~10 minutes.
+            </p>
+            <div class="tag-list">
+              <span class="tag highlight">T-SQL Optimization</span>
+              <span class="tag">Hampel Outlier Detection</span>
+              <span class="tag">FTSE Russell / Worldscope</span>
+              <span class="tag">Audit QA</span>
+            </div>
+            <div class="project-links">
+              <span class="tag" data-en="Enterprise · Proprietary" data-es="Empresarial · Propietario">Enterprise · Proprietary</span>
+            </div>
+          </article>
+        </div>
+
+        <details class="more-repos">
+          <summary data-en="Additional curated public repositories on GitHub" data-es="Otros repositorios públicos seleccionados en GitHub">Additional curated public repositories on GitHub</summary>
+          <div id="extra-repos-grid" class="repo-mini-grid"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Technical Skills & Languages -->
+    <section id="skills" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-en="Core Stack" data-es="Stack Técnico">Core Stack</span>
+            <h2 data-en="Skills &amp; Languages" data-es="Habilidades e Idiomas">Skills &amp; Languages</h2>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span data-en="SQL &amp; Data Engineering" data-es="SQL e Ingeniería de Datos">SQL &amp; Data Engineering</span>
+            </h3>
+            <div class="tag-list">
+              <span class="tag highlight">T-SQL</span>
+              <span class="tag highlight">SQL Server</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">GoogleSQL</span>
+              <span class="tag">Stored Procedures</span>
+              <span class="tag">Functions &amp; Transactions</span>
+              <span class="tag">CTEs &amp; Indexing</span>
+              <span class="tag">3NF Modeling</span>
+              <span class="tag">PLX</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span data-en="Python, BI &amp; Analytics" data-es="Python, BI y Analítica">Python, BI &amp; Analytics</span>
+            </h3>
+            <div class="tag-list">
+              <span class="tag highlight">Python</span>
+              <span class="tag highlight">Pandas &amp; Polars</span>
+              <span class="tag highlight">Power BI &amp; DAX</span>
+              <span class="tag">Excel (VBA, Power Query)</span>
+              <span class="tag">Google Sheets &amp; Apps Script</span>
+              <span class="tag">Data Quality &amp; QA</span>
+              <span class="tag">Hampel Outlier Detection</span>
+              <span class="tag">ML Classification</span>
+              <span class="tag">Equity Factors</span>
+              <span class="tag">Java (OOP)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span data-en="AI, DevOps &amp; Cloud" data-es="IA, DevOps y Nube">AI, DevOps &amp; Cloud</span>
+            </h3>
+            <div class="tag-list">
+              <span class="tag highlight">Agentic-AI Workflows</span>
+              <span class="tag highlight">GitHub Copilot</span>
+              <span class="tag">Git &amp; GitLab</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Linux / WSL2</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Cloudflare Workers / D1</span>
+              <span class="tag">Google Cloud Foundations</span>
+              <span class="tag">Jira &amp; VS Code</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lang-card">
+          <div class="lang-item">
+            <div class="lang-head">
+              <strong data-en="Spanish" data-es="Español">Spanish</strong>
+              <span data-en="Native" data-es="Nativo">Native</span>
+            </div>
+            <div class="lang-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Spanish Native"><i class="p100"></i></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-head">
+              <strong data-en="English" data-es="Inglés">English</strong>
+              <span>C2 Proficient · EF SET</span>
+            </div>
+            <div class="lang-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="English C2"><i class="p95"></i></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-head">
+              <strong data-en="Portuguese" data-es="Portugués">Portuguese</strong>
+              <span>B1 · McGraw Hill</span>
+            </div>
+            <div class="lang-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" aria-label="Portuguese B1"><i class="p62"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Credentials -->
+    <section id="education" class="section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-en="Academic Foundation" data-es="Formación Académica">Academic Foundation</span>
+            <h2 data-en="Education &amp; Credentials" data-es="Educación y Certificaciones">Education &amp; Credentials</h2>
+          </div>
+        </div>
+
+        <div class="edu-grid">
+          <article class="edu-card">
+            <div class="edu-top">
+              <span class="edu-inst">Universidad Estatal a Distancia (UNED)</span>
+              <span class="edu-year" data-en="Expected 2027" data-es="Esperado 2027">Expected 2027</span>
+            </div>
+            <div class="edu-deg" data-en="Associate Degree (Diplomado) in Computer Science" data-es="Diplomado en Ingeniería Informática">Associate Degree (Diplomado) in Computer Science</div>
+            <p class="edu-note" data-en="Coursework: Databases, Data Structures, Software Engineering, Statistics, Digital Logic." data-es="Cursos clave: Bases de Datos, Estructuras de Datos, Ingeniería de Software, Estadística, Lógica Digital.">Coursework: Databases, Data Structures, Software Engineering, Statistics, Digital Logic.</p>
+          </article>
+
+          <article class="edu-card">
+            <div class="edu-top">
+              <span class="edu-inst">Tecnológico de Costa Rica (TEC)</span>
+              <span class="edu-year">2025 – 2026</span>
+            </div>
+            <div class="edu-deg" data-en="Professional Development Program in Data Science &amp; Machine Learning" data-es="Programa de Ciencia de Datos y Machine Learning">Professional Development Program in Data Science &amp; Machine Learning</div>
+            <p class="edu-note" data-en="Certificates earned: Machine Learning for Data Science (Nov 2025) &amp; Mathematics for Data Science (Sep 2025)." data-es="Certificados obtenidos: Machine Learning para Ciencia de Datos (Nov 2025) y Matemática para Ciencia de Datos (Sep 2025).">Certificates earned: Machine Learning for Data Science (Nov 2025) &amp; Mathematics for Data Science (Sep 2025).</p>
+          </article>
+
+          <article class="edu-card">
+            <div class="edu-top">
+              <span class="edu-inst">Universidad CENFOTEC</span>
+              <span class="edu-year">Jul 2023</span>
+            </div>
+            <div class="edu-deg" data-en="Business Analytics Program" data-es="Programa de Analítica de Negocios (Business Analytics)">Business Analytics Program</div>
+            <p class="edu-note" data-en="Applied statistics, Power BI, SQL querying, and executive reporting." data-es="Estadística aplicada, Power BI, consultas SQL y reportería ejecutiva.">Applied statistics, Power BI, SQL querying, and executive reporting.</p>
+          </article>
+
+          <article class="edu-card">
+            <div class="edu-top">
+              <span class="edu-inst">Google Cloud Computing Foundations</span>
+              <span class="edu-year" data-en="Scholarship · 2026" data-es="Beca · 2026">Scholarship · 2026</span>
+            </div>
+            <div class="edu-deg" data-en="Cloud Infrastructure &amp; Data Engineering Track" data-es="Ruta de Infraestructura Cloud e Ingeniería de Datos">Cloud Infrastructure &amp; Data Engineering Track</div>
+            <p class="edu-note" data-en="Awarded scholarship in 2026; cloud certification currently in progress." data-es="Beca otorgada en 2026; certificación oficial en curso.">Awarded scholarship in 2026; cloud certification currently in progress.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="wrap reveal">
+      <div class="contact-band">
+        <div>
+          <span class="eyebrow" data-en="Let's Connect" data-es="Conversemos">Let's Connect</span>
+          <h2 data-en="Hiring for a data or automation team?" data-es="¿Buscas talento para tu equipo de datos o automatización?">Hiring for a data or automation team?</h2>
+          <p data-en="I'm based in Costa Rica (UTC-6, aligned with U.S. time zones) and open to remote or hybrid opportunities in Financial Data Analysis, Analytics Engineering, and Data Quality Automation." data-es="Ubicado en Costa Rica (UTC-6, alineado con husos horarios de EE. UU.) y abierto a oportunidades remotas o híbridas en Analítica Financiera, Ingeniería de Analítica y Automatización de Calidad de Datos.">
+            I'm based in Costa Rica (UTC-6, aligned with U.S. time zones) and open to remote or hybrid opportunities in Financial Data Analysis, Analytics Engineering, and Data Quality Automation.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <button class="btn btn-primary" type="button" data-copy-email>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>ricardo@ricardoruiz.tech</span>
+          </button>
+          <a class="btn btn-secondary" href="mailto:ricardo@ricardoruiz.tech" data-en="Send Email" data-es="Enviar Correo">Send Email</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/ruiz-ricardo" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noopener noreferrer" data-en="Resume PDF ↗" data-es="Ver CV PDF ↗">Resume PDF ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© <span id="year"></span> Ricardo Ruiz · Heredia, Costa Rica</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/ruiz-ricardo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/riru18" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" data-en="Resume" data-es="CV">Resume</a>
+        <a href="mailto:ricardo@ricardoruiz.tech">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
 </body>
 </html>
